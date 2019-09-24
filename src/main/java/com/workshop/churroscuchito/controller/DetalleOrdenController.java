@@ -18,30 +18,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workshop.churroscuchito.models.EstadoOrden;
+import com.workshop.churroscuchito.models.DetalleOrden;
 import com.workshop.churroscuchito.service.IEstadoOrdenService;
 
 @RestController
-@RequestMapping("/EstadoOrden")
-public class EstadoOrdenController {
+@RequestMapping("/DetalleOrden")
+public class DetalleOrdenController {
 	@Autowired
-	private IEstadoOrdenService service;
+	private IDetalleOrdenService service;
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<EstadoOrden>> listar(){
-		List<EstadoOrden> EstadoOrden=new ArrayList<>();
-		EstadoOrden=service.getAll();		
-		return new ResponseEntity<List<EstadoOrden>>(EstadoOrden, HttpStatus.OK);		
+	public ResponseEntity<List<DetalleOrden>> listar(){
+		List<DetalleOrden> DetalleOrden=new ArrayList<>();
+		DetalleOrden=service.getAll();		
+		return new ResponseEntity<List<DetalleOrden>>(DetalleOrden, HttpStatus.OK);		
 		
 	}
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public EstadoOrden registrar(@RequestBody EstadoOrden v) {
+	public DetalleOrden registrar(@RequestBody DetalleOrden v) {
 		return service.persist(v);
 	}
 
 	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<EstadoOrden> listarId(@PathVariable("id") Integer id){
-		EstadoOrden EstadoOrdenes=service.findById(id);		
-		return new ResponseEntity<EstadoOrden>(EstadoOrdenes, HttpStatus.OK);
+	public ResponseEntity<DetalleOrden> listarId(@PathVariable("id") Integer id){
+		DetalleOrden DetalleOrdenes=service.findById(id);		
+		return new ResponseEntity<DetalleOrden>(DetalleOrdenes, HttpStatus.OK);
 }
 	/*
 	@PutMapping(consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
