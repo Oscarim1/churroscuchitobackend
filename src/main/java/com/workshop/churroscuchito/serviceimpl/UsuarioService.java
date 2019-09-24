@@ -9,9 +9,7 @@ import com.workshop.churroscuchito.DAO.IDetalleUsuarioDAO;
 import com.workshop.churroscuchito.DAO.IUsuarioDAO;
 import com.workshop.churroscuchito.DTO.UsuarioDTO;
 import com.workshop.churroscuchito.models.Usuario;
-import com.workshop.churroscuchito.models.DetalleProducto;
 import com.workshop.churroscuchito.models.DetalleUsuario;
-import com.workshop.churroscuchito.models.Producto;
 import com.workshop.churroscuchito.service.IUsuarioService;
 @Service
 public class UsuarioService implements IUsuarioService{
