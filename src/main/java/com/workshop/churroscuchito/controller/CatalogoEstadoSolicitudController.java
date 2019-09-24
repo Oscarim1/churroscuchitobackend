@@ -18,30 +18,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workshop.churroscuchito.models.DetalleOrden;
-import com.workshop.churroscuchito.service.IDetalleOrdenService;
+import com.workshop.churroscuchito.models.CatalogoEstadoSolicitud;
+import com.workshop.churroscuchito.service.ICatalogoEstadoSolicitudService;
 
 @RestController
-@RequestMapping("/DetalleOrden")
-public class DetalleOrdenController {
+@RequestMapping("/CatalogoEstadoSolicitud")
+public class CatalogoEstadoSolicitudController {
 	@Autowired
-	private IDetalleOrdenService service;
+	private ICatalogoEstadoSolicitudService service;
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<DetalleOrden>> listar(){
-		List<DetalleOrden> DetalleOrden=new ArrayList<>();
-		DetalleOrden=service.getAll();		
-		return new ResponseEntity<List<DetalleOrden>>(DetalleOrden, HttpStatus.OK);		
+	public ResponseEntity<List<CatalogoEstadoSolicitud>> listar(){
+		List<CatalogoEstadoSolicitud> CatalogoEstadoSolicitud=new ArrayList<>();
+		CatalogoEstadoSolicitud=service.getAll();		
+		return new ResponseEntity<List<CatalogoEstadoSolicitud>>(CatalogoEstadoSolicitud, HttpStatus.OK);		
 		
 	}
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public DetalleOrden registrar(@RequestBody DetalleOrden v) {
+	public CatalogoEstadoSolicitud registrar(@RequestBody CatalogoEstadoSolicitud v) {
 		return service.persist(v);
 	}
 
 	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DetalleOrden> listarId(@PathVariable("id") Integer id){
-		DetalleOrden DetalleOrdenes=service.findById(id);		
-		return new ResponseEntity<DetalleOrden>(DetalleOrdenes, HttpStatus.OK);
+	public ResponseEntity<CatalogoEstadoSolicitud> listarId(@PathVariable("id") Integer id){
+		CatalogoEstadoSolicitud CatalogoEstadoSolicitudes=service.findById(id);		
+		return new ResponseEntity<CatalogoEstadoSolicitud>(CatalogoEstadoSolicitudes, HttpStatus.OK);
 }
 	/*
 	@PutMapping(consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
