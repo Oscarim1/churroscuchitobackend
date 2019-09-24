@@ -23,14 +23,14 @@ import com.workshop.churroscuchito.service.IDetalleUsuarioService;
 
 @RestController
 @RequestMapping("/DetalleUsuario")
-public class DetalleUsuarioController {
+public class EstadoOrdenController {
 	@Autowired
-	private IDetalleUsuarioService service;
+	private IEstadoOrdenService service;
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<DetalleUsuario>> listar(){
-		List<DetalleUsuario> DetalleUsuario=new ArrayList<>();
-		DetalleUsuario=service.getAll();		
-		return new ResponseEntity<List<DetalleUsuario>>(DetalleUsuario, HttpStatus.OK);		
+	public ResponseEntity<List<EstadoOrden>> listar(){
+		List<EstadoOrden> EstadoOrden=new ArrayList<>();
+		EstadoOrden=service.getAll();		
+		return new ResponseEntity<List<EstadoOrden>>(EstadoOrden, HttpStatus.OK);		
 		
 	}
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
@@ -39,9 +39,9 @@ public class DetalleUsuarioController {
 	}
 
 	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DetalleUsuario> listarId(@PathVariable("id") Integer id){
-		DetalleUsuario DetalleUsuarios=service.findById(id);		
-		return new ResponseEntity<DetalleUsuario>(DetalleUsuarios, HttpStatus.OK);
+	public ResponseEntity<EstadoOrden> listarId(@PathVariable("id") Integer id){
+		EstadoOrden EstadoOrdenes=service.findById(id);		
+		return new ResponseEntity<EstadoOrden>(EstadoOrdenes, HttpStatus.OK);
 }
 	/*
 	@PutMapping(consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
