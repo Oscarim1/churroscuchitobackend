@@ -18,44 +18,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workshop.churroscuchito.models.CatalogoEstadoOrden;
-import com.workshop.churroscuchito.service.ICatalogoEstadoOrdenService;
-
+import com.workshop.churroscuchito.DTO.OrdenDTO;
+import com.workshop.churroscuchito.models.Orden;
+import com.workshop.churroscuchito.service.IOrdenService;
 @RestController
-@RequestMapping("/CatalogoEstadoOrden")
-public class CatalogoEstadoOrdenController {
+@RequestMapping("/Orden")
+public class OrdenController {
 	@Autowired
-	private ICatalogoEstadoOrdenService service;
+	IOrdenService service;
 	@GetMapping(produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<CatalogoEstadoOrden>> listar(){
-		List<CatalogoEstadoOrden> CatalogoEstadoOrden=new ArrayList<>();
-		CatalogoEstadoOrden=service.getAll();		
-		return new ResponseEntity<List<CatalogoEstadoOrden>>(CatalogoEstadoOrden, HttpStatus.OK);		
+	public ResponseEntity<List<Orden>> listar(){
+		List<Orden> Ordenes=new ArrayList<>();
+		Ordenes=service.getAll();		
+		return new ResponseEntity<List<Orden>>(Ordenes, HttpStatus.OK);		
 		
 	}
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public CatalogoEstadoOrden registrar(@RequestBody CatalogoEstadoOrden v) {
+	public Orden registrar(@RequestBody OrdenDTO v) {
 		return service.persist(v);
 	}
-
 	@GetMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CatalogoEstadoOrden> listarId(@PathVariable("id") Integer id){
-		CatalogoEstadoOrden CatalogoEstadoOrdenes=service.findById(id);		
-		return new ResponseEntity<CatalogoEstadoOrden>(CatalogoEstadoOrdenes, HttpStatus.OK);
-}
+	public ResponseEntity<Orden> listarId(@PathVariable("id") Integer id){		
+		Orden Ordenes=service.findById(id);		
+		return new ResponseEntity<Orden>(Ordenes, HttpStatus.OK);		
+		
+	}
 	/*
 	@PutMapping(consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object>actualizar(@Valid @RequestBody CatalogoEstadoOrden tipo){
-		service.merge(tipo);
+	public ResponseEntity<Object>actualizar(@Valid @RequestBody Orden Ordenes){
+		service.merge(Ordenes);
 		return new ResponseEntity<Object>(HttpStatus.OK);
 		
 	}
-	
 	@DeleteMapping(value="/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
-	public void eliminar(@PathVariable Integer id){
-		CatalogoEstadoOrden tip=service.findById(id);
-		service.delete(id);
-		
+	public void eliminar(@PathVariable Integer id) {
+		Orden tips=service.findById(id);
+			service.delete(id);
 	}
 	*/
 }
