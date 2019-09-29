@@ -35,7 +35,7 @@ public class ProductoService implements IProductoService{
 	@Override
 	public Producto findById(Integer id) {
 		// TODO Auto-generated method stub
-		return service.findOne(id);
+		return service.findById(id).orElse(null);
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class ProductoService implements IProductoService{
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
-		service.delete(id);
+		service.deleteById(id);;
 	}
 
 

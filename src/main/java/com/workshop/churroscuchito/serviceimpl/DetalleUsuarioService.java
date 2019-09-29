@@ -31,7 +31,7 @@ public class DetalleUsuarioService implements IDetalleUsuarioService{
 	@Override
 	public DetalleUsuario findById(Integer id) {
 		// TODO Auto-generated method stub
-		return service.findOne(id);
+		return service.findById(id).orElse(null);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class DetalleUsuarioService implements IDetalleUsuarioService{
 	@Override
 	public void delete(Integer id) {
 		// TODO Auto-generated method stub
-		service.delete(id);
+		service.deleteById(id);
 	}
 
 }
