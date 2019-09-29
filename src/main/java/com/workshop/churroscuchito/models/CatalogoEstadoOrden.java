@@ -8,14 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CatalogoEstadoSolicitud")
-public class CatalogoEstadoSolicitud {
+@Table(name="CatalogoEstadoOrden")
+public class CatalogoEstadoOrden {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name="descripcion",nullable=false)
 	private String descripcion;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -29,5 +28,4 @@ public class CatalogoEstadoSolicitud {
 		this.descripcion = descripcion;
 	}
 	
-
 }
